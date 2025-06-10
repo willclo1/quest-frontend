@@ -1,0 +1,92 @@
+/* PuzzleView.css */
+
+/* 1) Ensures the inner “card” isn’t full‐bleed; centers content */
+.puzzle-wrapper {
+  padding: 2rem;
+}
+
+.puzzle-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  padding: 2.5rem 1.5rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+/* 2) Heading uses shared .h2 class from index.css */
+
+/* 3) Tile container: same as before */
+.tile-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 4) Tile styling: same as before but slightly tweaked for card */
+.tile {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #ffffff;
+  border: 2px solid #004080;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #004080;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-transform: uppercase;
+}
+
+.tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 5) Submit area uses shared classes */
+.guess-input {
+  margin-bottom: 1rem;
+}
+
+/* 6) Status message */
+.puzzle-status {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #004080;
+}
+
+/* 7) Loading & error (uses global styles) */
+.puzzle-loading,
+.puzzle-error {
+  font-size: 1.25rem;
+  color: #ffffff; /* white on gradient */
+  margin-top: 2rem;
+}
+.puzzle-error {
+  color: #ff6b6b; /* softer red for errors */
+}
+.memory-image-wrapper {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.memory-image {
+  /* Shrink the image to at most 80% of the card width, up to 400px */
+  width: 80%;
+  max-width: 400px;
+
+  /* Keep aspect ratio */
+  height: auto;
+
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.8s ease-in-out;
+}

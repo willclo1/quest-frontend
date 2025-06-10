@@ -1,0 +1,102 @@
+/* src/index.css */
+
+/* 1) Import Poppins font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+/* 2) Reset some defaults and force the ocean gradient background everywhere */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* 3) Ocean‐gradient background (same for all pages) */
+.app-background {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    #002b5b 10%,   /* deep navy */
+    #005f99 40%,   /* ocean blue */
+    #0099cc 70%,   /* bright aqua */
+    #33ccff 90%    /* light turquoise */
+  );
+  background-size: 400% 400%;
+  animation: oceanShift 20s ease infinite;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes oceanShift {
+  0%   {
+    background-position: 0% 50%;
+  }
+  50%  {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 4) Consistent button style */
+.button-primary {
+  background-color: #ff69b4;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.button-primary:hover {
+  background-color: #ff4fa1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 5) Consistent input style */
+.input-primary {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 2px solid #004080;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.input-primary:focus {
+  border-color: #0077b6;
+}
+
+/* 6) Utility to center content vertically + horizontally */
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 7) Titles/Common text */
+.h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff; /* white or near‐white for good contrast */
+  margin: 1rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 1rem 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+}

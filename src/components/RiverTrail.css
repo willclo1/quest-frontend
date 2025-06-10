@@ -1,0 +1,11 @@
+/* src/components/RiverTrail.css */
+
+.river-trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 130%;     /* Slightly overshoot for large screens */
+  height: 130%;    /* Overshoot so no clipping on tall viewports */
+  z-index: 0;      /* Behind chapter nodes */
+  pointer-events: none; /* Mouse clicks pass through */
+}

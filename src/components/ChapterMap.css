@@ -1,0 +1,136 @@
+/* ChapterMap.css */
+
+/* 1) Wrapper ensures full‐screen with gradient */
+.ChapterMap-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 2) Wave dots at the bottom (optional for added texture) */
+.ChapterMap-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 25vh;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    transparent 21%
+  );
+  background-size: 60px 60px;
+  animation: waveMove 5s linear infinite;
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-60px);
+  }
+}
+
+/* 3) River (behind islands) */
+.river-trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 130%;
+  height: 130%;
+  z-index: 0; /* behind everything */
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* 4) Island nodes “float” on top of river (z-index: 1) */
+.chapter-node {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at top left, #81d4fa, #29b6f6);
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1;
+
+  /* 4a) Islands bob up and down */
+  animation: floatIsland 3s ease-in-out infinite;
+}
+
+@keyframes floatIsland {
+  0%, 100% {
+    transform: translate(-50%, -52%);
+  }
+  50% {
+    transform: translate(-50%, -48%);
+  }
+}
+
+/* 5) Hover: pop + ripple + otter */
+.chapter-node:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.chapter-node:hover::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rippleEffect 1s ease-out;
+  pointer-events: none;
+  z-index: 0; /* just behind the island */
+}
+
+@keyframes rippleEffect {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* 6) Island label text */
+.chapter-label {
+  color: #001f3f;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+/* 7) Otter icon pops up on hover */
+.otter-icon {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px) scale(0.7);
+  font-size: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.chapter-node:hover .otter-icon {
+  transform: translateX(-50%) translateY(0) scale(1);
+  opacity: 1;
+}
