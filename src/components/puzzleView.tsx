@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getWordScramble, submitGuess, type ValidateResponse } from "../api/game";
 import { useNavigate } from "react-router-dom";
-import "./PuzzleView.css";
+import "./puzzleView.css";
 
 interface PuzzleViewProps {
   chapterId: string;
